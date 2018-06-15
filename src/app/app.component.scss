@@ -4,8 +4,16 @@
   padding: 25px 50px 25px;
   background-color: white;
   opacity: 0.6;
+  align-items: center;
 }
 
+.title-container:hover {
+  opacity: 0.8;
+}
+.title-container h1 {
+  font-size: 6rem;
+  font-weight: 600;
+}
 .menu-container {
   display: flex;
   align-self: flex-end;
@@ -14,7 +22,8 @@
 .menu-item {
   padding: 1em;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: 400;
   color: rgb(126, 126, 126);
 }
 

@@ -6,11 +6,8 @@ import { PetService } from "../pet.service";
 @Component({
   selector: "app-splash",
   templateUrl: "./splash.component.html",
-<<<<<<< HEAD
-  styleUrls: ["./splash.component..scss"]
-=======
+
   styleUrls: ["./splash.component.scss"]
->>>>>>> feat/letsee
 })
 export class SplashComponent implements OnInit {
   constructor(

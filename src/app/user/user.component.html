@@ -48,11 +48,7 @@
 </ng-container>
 
 <ng-container *ngIf="user">
-<<<<<<< HEAD
   <h2>User: {{user.name}}</h2>
-=======
-  <h1>{{user.name}}</h1>
->>>>>>> feat/letsee
   <div *ngFor="let message of user.messages">
     <alert [type]="message.alert" [dismissible]="dismissible" (onClosed)="markAsRead(message, user)">{{ message.message }}</alert>
   </div>

@@ -1,6 +1,75 @@
 .splashcontainer {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.wrapperimage {
   position: fixed;
   top: 0;
   z-index: -5;
-  background-size: cover;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, rgb(29, 4, 3), rgb(45, 15, 15));
+}
+
+.buttonsplashuser {
+  height: 40px;
+  width: 180px;
+  // background: -webkit-linear-gradient(#9fc5e8, #3d85c6);
+  border-radius: 5px;
+  padding: 8px 20px;
+  display: inline-block;
+  font: normal 700 46px/1 "Lato", sans-serif;
+  text-align: center;
+  font-size: 17px;
+  background: linear-gradient(to left, rgb(166, 130, 246), rgb(217, 195, 223));
+  color: #ffffff;
+  height: 50px;
+  width: 250px;
+  margin-top: 20%;
+  margin-left: 14%;
+  padding-top: 16px;
+  text-decoration: none;
+}
+.buttonsplashuser:hover {
+  background: rgb(166, 130, 246);
+}
+
+.buttonsplashorg {
+  // background: #9fc5e8;
+  // background: -webkit-linear-gradient(#9fc5e8, #3d85c6);
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  font: normal 700 46px/1 "Lato", sans-serif;
+  text-align: center;
+  font-size: 17px;
+  background: linear-gradient(to left, rgb(156, 156, 156), rgb(203, 203, 203));
+  color: #ffffff;
+  height: 50px;
+  width: 250px;
+  padding-top: 16px;
+  margin-top: 20%;
+  margin-left: 14%;
+}
+.buttonsplashorg:hover {
+  background: rgb(156, 156, 156);
+}
+
+.textsplash {
+  font-size: 32px;
+  color: white;
+  font-weight: 700;
+  font-family: "Lato";
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.text-button-container {
+  max-width: 400px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 14%;
+  margin-left: 40%;
 }

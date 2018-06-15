@@ -16,18 +16,7 @@ import { Org } from "./models/org.model";
 
 @Injectable()
 export class PetService {
-<<<<<<< HEAD
-
-  private petUrl = 'http://localhost:3000'
-
-  constructor(private http: HttpClient) { }
-
-  private handleAngularJsonBug (error: HttpErrorResponse) {
-		const JsonParseError = 'Http failure during parsing for';
-		const matches = error.message.match(new RegExp(JsonParseError, 'ig'));
-=======
   private petUrl = "http://localhost:3000";
->>>>>>> feat/letsee
 
   constructor(private http: HttpClient) {}
 
@@ -44,12 +33,8 @@ export class PetService {
   }
 
   addPet(Pet: {}): Observable<Pet> {
-<<<<<<< HEAD
-    return this.http.post<Pet>(`${this.petUrl}/pets`, Pet)
-=======
     return this.http
       .post<Pet>(`${this.petUrl}/pets`, Pet)
->>>>>>> feat/letsee
       .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
   }
 
@@ -67,15 +52,10 @@ export class PetService {
   }
 
   getOrgs(): Observable<Org[]> {
-<<<<<<< HEAD
-    console.log('Inside getOrgs Service');
-    return this.http.get<Org[]>(`${this.petUrl}/orgs`)
-      .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error))
-=======
+    console.log("Inside getOrgs Service");
     return this.http
       .get<Org[]>(`${this.petUrl}/orgs`)
       .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
->>>>>>> feat/letsee
   }
 
   getOrg(id: String): Observable<Org> {
@@ -86,18 +66,11 @@ export class PetService {
   }
 
   getUser(id: String): Observable<User> {
-<<<<<<< HEAD
-    console.log('getUser() from PetService');
-    const url = `${this.petUrl}/users/${id}`
-    return this.http.get<User>(url)
-      .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error))
-=======
-    console.log(`${this.petUrl}/users/${id}`);
+    console.log("getUser() from PetService");
     const url = `${this.petUrl}/users/${id}`;
     return this.http
       .get<User>(url)
       .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
->>>>>>> feat/letsee
   }
 
   adoptionRequest(org: String, pet: String, user: String): Observable<Org> {
@@ -135,11 +108,6 @@ export class PetService {
   }
 
   markAsRead(_id, user): Observable<User> {
-<<<<<<< HEAD
-
-
-=======
->>>>>>> feat/letsee
     const url = `${this.petUrl}/users/${user}/markAsRead`;
     const message = { _id, read: true };
     return this.http
