@@ -1,5 +1,5 @@
 <ng-container *ngIf="pets">
-  <div class="each-container">    
+  <div class="each-container">
     <div *ngFor="let pet of pets" class="card card-block card-header">
       <div class="card_img_text_container">
         <div class="image-container">
@@ -28,16 +28,16 @@
         routerLink="/pets/{{pet._id}}">{{pet.name}}
       </button>
       <!-- <div class="container-adoption-button">
-        <button 
-          (click)="adoptionRequest(pet.organization._id)" 
-          type="button" 
+        <button
+          (click)="adoptionRequest(pet.organization._id)"
+          type="button"
           class="btn btn-primary"
         >
           Adoptar
         </button>
-        <button 
-          (click)="tempResidencyRequest(pet.organization._id)" 
-          type="button" 
+        <button
+          (click)="tempResidencyRequest(pet.organization._id)"
+          type="button"
           class="btn btn-primary"
         >
           Acoger
@@ -48,6 +48,7 @@
 </ng-container>
 
 <ng-container *ngIf="user">
+  <h1>{{user.name}}</h1>
   <div *ngFor="let message of user.messages">
     <alert [type]="message.alert" [dismissible]="dismissible" (onClosed)="markAsRead(message, user)">{{ message.message }}</alert>
   </div>

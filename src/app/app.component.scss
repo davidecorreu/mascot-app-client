@@ -2,14 +2,13 @@
   display: flex;
   justify-content: space-between;
   padding: 25px 50px 25px;
-  background-color: rgb(212, 255, 255);
+  background-color: rgba(212, 255, 255, 0.4);
 }
 
 .btn-group {
   display: flex;
   align-self: flex-end;
 }
-
 
 button {
   font-size: 1.2em;
@@ -21,6 +20,6 @@ span {
 
 .btn-primary {
   color: #fff;
-  background-color: #00BCD4;
-  border-color: #00BCD4;
+  background-color: #00bcd4;
+  border-color: #00bcd4;
 }

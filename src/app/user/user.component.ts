@@ -1,46 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import { PetService } from '../pet.service';
-import { Pet } from '../models/pet.model';
-import { User } from '../models/user.model';
+import { PetService } from "../pet.service";
+import { Pet } from "../models/pet.model";
+import { User } from "../models/user.model";
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  selector: "app-user",
+  templateUrl: "./user.component.html",
+  styleUrls: ["./user.component.scss"]
 })
 export class UserComponent implements OnInit {
   pets: Pet[];
   user: User;
   dismissible = true;
- 
+
   markAsRead(dismissedAlert: any, user: any): void {
-    this.user.messages = this.user.messages.filter(alert => alert !== dismissedAlert);
-    this.petService.markAsRead(dismissedAlert._id, user._id)
-      .subscribe(
-        data => console.log('data', data),
-        error => console.log('error', error)
+    this.user.messages = this.user.messages.filter(
+      alert => alert !== dismissedAlert
     );
+    this.petService
+      .markAsRead(dismissedAlert._id, user._id)
+      .subscribe(
+        data => console.log("data", data),
+        error => console.log("error", error)
+      );
   }
 
-  constructor(private petService: PetService) { }
-  
+  constructor(private petService: PetService) {}
+
   ngOnInit() {
     this.getPets();
     this.getUser();
   }
 
   getPets(): void {
-    this.petService.getPets()
-      .subscribe(pets => {
-        this.pets = pets.filter(i => i.available !== false)
-      });
-  } 
+    this.petService.getPets().subscribe(pets => {
+      this.pets = pets.filter(i => i.available !== false);
+    });
+  }
 
   getUser(): void {
-    const id = '5b005cecd5de87305632855b';
-    this.petService.getUser(id)
-      .subscribe(user => this.user = user)
+    const id = "5b228d2439c7f42eb1a55dfd";
+    this.petService.getUser(id).subscribe(user => (this.user = user));
   }
 
   read(): void {
