@@ -2,12 +2,21 @@
   display: flex;
   justify-content: space-between;
   padding: 25px 50px 25px;
-  background-color: rgb(212, 255, 255);
+  // background-color: rgb(212, 255, 255);
+  background-color: white;
+  opacity: 0.6;
 }
 
-.btn-group {
+.menu-container {
   display: flex;
   align-self: flex-end;
+}
+
+.menu-item {
+  padding: 1em;
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: rgb(126,126,126);
 }
 
 

@@ -12,11 +12,11 @@ import { Org } from './models/org.model';
 
 @Injectable()
 export class PetService {
-  
+
   private petUrl = 'http://localhost:3000'
-  
+
   constructor(private http: HttpClient) { }
-  
+
   private handleAngularJsonBug (error: HttpErrorResponse) {
 		const JsonParseError = 'Http failure during parsing for';
 		const matches = error.message.match(new RegExp(JsonParseError, 'ig'));
@@ -29,7 +29,7 @@ export class PetService {
 		}
   }
 
-  addPet(Pet: {}): Observable<Pet> {    
+  addPet(Pet: {}): Observable<Pet> {
     return this.http.post<Pet>(`${this.petUrl}/pets`, Pet)
       .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
   }
@@ -46,6 +46,7 @@ export class PetService {
   }
 
   getOrgs(): Observable<Org[]> {
+    console.log('Inside getOrgs Service');
     return this.http.get<Org[]>(`${this.petUrl}/orgs`)
       .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error))
   }
@@ -57,6 +58,7 @@ export class PetService {
   }
 
   getUser(id: String): Observable<User> {
+    console.log('getUser() from PetService');
     const url = `${this.petUrl}/users/${id}`
     return this.http.get<User>(url)
       .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error))
@@ -85,7 +87,7 @@ export class PetService {
 
   markAsRead(_id, user): Observable<User> {
 
-    
+
     const url = `${this.petUrl}/users/${user}/markAsRead`;
     const message = { _id, read: true }
     return this.http.put<User>(url, message)

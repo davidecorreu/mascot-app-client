@@ -25,6 +25,7 @@ export class OrgDetailComponent implements OnInit {
   }
 
   getOrg(): void {
+    // console.log(org);
     const id = this.route.snapshot.paramMap.get('_id');
     this.petService.getOrg(id)
       .subscribe(org => this.org = org);
