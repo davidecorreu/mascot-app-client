@@ -1,3 +1,6 @@
+@import './variables';
+
+
 .title-container {
   display: flex;
   justify-content: space-between;
@@ -19,12 +22,17 @@
   align-self: flex-end;
 }
 
+.app-title {
+  text-decoration: none;
+  color: $color-title;
+}
+
 .menu-item {
   padding: 1em;
   text-decoration: none;
   font-size: 2rem;
   font-weight: 400;
-  color: rgb(126, 126, 126);
+  color: $color-title;
 }
 
 button {

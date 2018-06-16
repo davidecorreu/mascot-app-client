@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { PetService } from '../pet.service';
-import { Org } from '../models/org.model'
+import { Org } from '../models/org.model';
 
 @Component({
   selector: 'app-org-detail',
@@ -12,7 +12,9 @@ import { Org } from '../models/org.model'
 })
 export class OrgDetailComponent implements OnInit {
 
-  @Input() org: Org;
+  // @Input()  org: Org;
+  org: Org;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +30,10 @@ export class OrgDetailComponent implements OnInit {
     // console.log(org);
     const id = this.route.snapshot.paramMap.get('_id');
     this.petService.getOrg(id)
-      .subscribe(org => this.org = org);
+      .subscribe(org => {
+        this.org = org;
+        console.log('org-detail.component, this.org:',this.org);
+      });
   }
 
   acceptAdoption(queryId, petId, usrId): void {
