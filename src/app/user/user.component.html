@@ -48,7 +48,7 @@
 </ng-container>
 
 <ng-container *ngIf="user">
-  <h2>User: {{user.name}}</h2>
+  <!-- <h2>User: {{user.name}}</h2> -->
   <div *ngFor="let message of user.messages">
     <alert [type]="message.alert" [dismissible]="dismissible" (onClosed)="markAsRead(message, user)">{{ message.message }}</alert>
   </div>
