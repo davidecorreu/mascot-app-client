@@ -26,23 +26,9 @@ export class PetsComponent implements OnInit {
     this.getPets();
   }
 
-  // classType(): String {
-  //   // let currentType = this.type;
-  //   if (this.type === "large") this.type = "medium";
-  //   else if (this.type === "medium") this.type = "small";
-  //   else if (this.type === "small") this.type = "large";
-  //   return this.type;
-  // }
-
   getPets(): void {
     this.petService.getPets().subscribe(pets => {
       this.pets = pets.filter(i => i.available !== false);
     });
-  }
-
-  getPetName(pet): void {
-    console.log(pet);
-    this.petService.setSelectedPet(pet);
-    this.petService.pet = pet;
   }
 }

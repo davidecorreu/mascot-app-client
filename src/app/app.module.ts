@@ -9,7 +9,6 @@ import { ModalModule } from "ngx-bootstrap/modal";
 
 import { AppComponent } from "./app.component";
 import { PetsComponent } from "./pets/pets.component";
-import { UserComponent } from "./user/user.component";
 import { PetService } from "./pet.service";
 import { AppRoutingModule } from ".//app-routing.module";
 import { OrgsComponent } from "./orgs/orgs.component";
@@ -18,6 +17,7 @@ import { OrgDetailComponent } from "./org-detail/org-detail.component";
 import { SplashComponent } from "./splash/splash.component";
 import { OrgCardComponent } from "./org-card/org-card.component";
 import { OrgRegisterComponent } from "./org-register/org-register.component";
+import { PetSelectComponent } from "./pet-select/pet-select.component";
 
 @NgModule({
   declarations: [
@@ -26,10 +26,10 @@ import { OrgRegisterComponent } from "./org-register/org-register.component";
     OrgsComponent,
     NewPetComponent,
     OrgDetailComponent,
-    UserComponent,
     SplashComponent,
     OrgCardComponent,
-    OrgRegisterComponent
+    OrgRegisterComponent,
+    PetSelectComponent
   ],
   imports: [
     AlertModule.forRoot(),

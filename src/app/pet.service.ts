@@ -17,8 +17,6 @@ import { Org } from "./models/org.model";
 @Injectable()
 export class PetService {
   private petUrl = "http://localhost:3000";
-  public pet: Pet = null;
-  selectedPet: EventEmitter<Pet> = new EventEmitter<Pet>();
 
   constructor(private http: HttpClient) {}
 
@@ -32,10 +30,6 @@ export class PetService {
     } else {
       return Observable.throw(error); // re-throw
     }
-  }
-
-  setSelectedPet(value: Pet) {
-    this.selectedPet.emit(value);
   }
 
   addPet(Pet: {}): Observable<Pet> {
