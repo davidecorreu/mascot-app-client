@@ -20,6 +20,7 @@ import { OrgLoginComponent } from "./org-login/org-login.component";
 import { UserRegisterComponent } from "./user-register/user-register.component";
 import { PetSelectComponent } from "./pet-select/pet-select.component";
 import { PetsComponent } from "./pets/pets.component";
+import { UserLoginComponent } from './user-login/user-login.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PetsComponent } from "./pets/pets.component";
     OrgRegisterComponent,
     OrgLoginComponent,
     UserRegisterComponent,
-    PetSelectComponent
+    PetSelectComponent,
+    UserLoginComponent
   ],
   imports: [
     AlertModule.forRoot(),
