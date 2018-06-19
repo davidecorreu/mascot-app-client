@@ -12,10 +12,14 @@
           <p>{{pet.age}} years</p>
           <p>{{pet.weight}} Kg</p>
           <p>{{pet.location}}</p>
+          <p>Organization : {{pet.organization.name}}</p>
+
         </div>
     </div>
   </div>
-  <div *ngIf="pet" class="message">
+  <app-user-register *ngIf='!loggedIn' class = 'user-register-form'></app-user-register>
+  <button *ngIf='loggedIn' type="button" name="button" class= 'button-accept' (click)="buttonAccept()" [hidden]="accept">Get in touch with {{pet.organization.name}}</button>
+  <div *ngIf="accept" class="message">
     <p>We have received your petition to adopt {{pet.name}}!. We will send your contact information to {{pet.organization.name}} so they can get in contact with you as soon as possible. Have a nice day!</p>
   </div>
 </div>

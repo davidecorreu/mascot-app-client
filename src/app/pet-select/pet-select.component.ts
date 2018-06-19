@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
+import { UserRegisterComponent } from "../user-register/user-register.component";
 
 import { PetService } from "../pet.service";
 import { Pet } from "../models/pet.model";
@@ -13,6 +14,8 @@ import { Pet } from "../models/pet.model";
 export class PetSelectComponent implements OnInit {
   pet: Pet;
   public id: string;
+  loggedIn: boolean = false;
+  accept: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,11 +29,12 @@ export class PetSelectComponent implements OnInit {
 
   getPet(): void {
     this.id = this.route.snapshot.paramMap.get("_id");
-    console.log(this.id, "IDDDDDDD");
     this.petService.getPet(this.id).subscribe(pet => (this.pet = pet));
-    console.log(this.pet);
   }
 
+  buttonAccept(): void {
+    this.accept = true;
+  }
   showPet(): void {
     console.log(this.pet);
   }

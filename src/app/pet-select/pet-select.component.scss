@@ -61,3 +61,34 @@
   align-items: center;
   margin-top: 10%;
 }
+
+.user-register-form {
+  // position: fixed;
+  height: 50%;
+  width: 20%;
+
+  margin: 10% 5% 15% 15%;
+}
+
+.button-accept {
+  height: 60px;
+  width: 200px;
+  // background: -webkit-linear-gradient(#9fc5e8, #3d85c6);
+  border-radius: 5px;
+  padding: 8px 20px;
+  display: inline-block;
+  font: normal 700 46px/1 "Lato", sans-serif;
+  text-align: center;
+  font-size: 17px;
+  background: linear-gradient(to left, rgb(166, 130, 246), rgb(217, 195, 223));
+  color: #ffffff;
+  height: 50px;
+  width: 250px;
+  margin-top: 20%;
+  margin-left: 14%;
+  padding-top: 16px;
+  text-decoration: none;
+}
+.button-accept:hover {
+  background: rgb(166, 130, 246);
+}
