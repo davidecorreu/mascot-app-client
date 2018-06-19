@@ -17,7 +17,9 @@ import { OrgDetailComponent } from './org-detail/org-detail.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { SplashComponent } from './splash/splash.component';
 import { OrgCardComponent } from './org-card/org-card.component';
-import { OrgRegisterComponent } from './org-register/org-register.component'
+import { OrgRegisterComponent } from './org-register/org-register.component';
+import { OrgLoginComponent } from './org-login/org-login.component';
+import { UserRegisterComponent } from './user-register/user-register.component'
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { OrgRegisterComponent } from './org-register/org-register.component'
     UserDetailComponent,
     SplashComponent,
     OrgCardComponent,
-    OrgRegisterComponent
+    OrgRegisterComponent,
+    OrgLoginComponent,
+    UserRegisterComponent
   ],
   imports: [
     AlertModule.forRoot(),

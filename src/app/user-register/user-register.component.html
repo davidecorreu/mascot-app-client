@@ -1,0 +1,68 @@
+<div class="user-register-container">
+  <h2>Sign into our website</h2>
+  <form class="" #userRegisterForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" name="name" required
+      [(ngModel)]="user.name" #userName = "ngModel" #spy>
+      <div [hidden]="userName.valid || userName.pristine" class="alert alert-danger">
+        Name is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="surname">Surname</label>
+      <input type="text" class="form-control" name="surname" required
+      [(ngModel)]="user.surname" #userSurname = "ngModel" #spy>
+      <div [hidden]="userSurname.valid || userSurname.pristine" class="alert alert-danger">
+        Surname is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input type="text" class="form-control" name="location" required
+      [(ngModel)]="user.location" #userLocation = "ngModel">
+      <div [hidden]="userLocation.valid || userLocation.pristine" class="alert alert-danger">
+        Location is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="telephone">Phone number</label>
+      <input type="tel" class="form-control" name="telephone" required
+      [(ngModel)]="user.telephone" #userTelephone = "ngModel">
+      <div [hidden]="userTelephone.valid || userTelephone.pristine" class="alert alert-danger">
+        Phone number is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" name="email" required
+      [(ngModel)]="user.email" #userEmail = "ngModel">
+      <div [hidden]="userEmail.valid || userEmail.pristine" class="alert alert-danger">
+        Email is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="web">Password</label>
+      <input type="password" class="form-control" name="password" required
+      [(ngModel)]="password" #pass = "ngModel">
+      <div [hidden]="pass.valid || pass.pristine" class="alert alert-danger">
+        Password is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="web">Re-enter password</label>
+      <input type="password" class="form-control" name="repassword" required
+      [(ngModel)]="repassword" #repass = "ngModel">
+      <div [hidden]="repass.valid || repass.pristine" class="alert alert-danger">
+        Re-enter the password is required
+      </div>
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{errorMessage}}
+    </div>
+    <alert *ngIf="successMessage" type="success">
+      {{successMessage}}
+    </alert>
+    <button type="submit" class="btn btn-succes" [disabled]="!userRegisterForm.form.valid">Sign in</button>
+  </form>
+</div>

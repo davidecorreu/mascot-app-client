@@ -2,6 +2,9 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/catch";
 import "rxjs/add/observable/throw";
+import "rxjs/add/operator/map";
+import btoa from "btoa";
+
 import { ErrorObservable } from "rxjs/observable/ErrorObservable";
 import {
   HttpClient,
@@ -16,6 +19,10 @@ import { Org } from "./models/org.model";
 
 @Injectable()
 export class PetService {
+  private authToken: string;
+  public currentOrg: string;
+  public currentUser: string;
+
   private petUrl = "http://localhost:3000";
 
   constructor(private http: HttpClient) {}
@@ -74,7 +81,48 @@ export class PetService {
     }
     return this.http
     .post<any>(url, org, httpOptions)
+    .map(res => {
+      this.authToken = res.jwt_token;
+      this.currentOrg = res.name;
+      return res;
+    })
     // .catch(error => error)
+    .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error))
+  }
+
+  loginOrg(orgInfo): any {
+    const url = `${this.petUrl}/orgs/sign-in`;
+    console.log('btoa:',Buffer.from(orgInfo.name + ':' + orgInfo.password).toString('base64'));
+    const httpOptions = {
+      headers: {
+        'Authorization': 'Basic ' + Buffer.from(orgInfo.name + ':' + orgInfo.password).toString('base64')
+      }
+    }
+    return this.http
+    .get<any>(url, httpOptions)
+    .map(res => {
+      if (res.hasOwnProperty('jwt_token')) {
+        this.authToken = res.jwt_token;
+        this.currentOrg = res.name;
+        return res;
+      }
+    })
+  }
+
+  addUser(user: object): Observable<any> {
+    const url = `${this.petUrl}/users`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    }
+    return this.http
+    .post<any>(url, user, httpOptions)
+    .map(res => {
+      this.authToken = res.jwt_token;
+      this.currentUser = res.name;
+      return res;
+    })
     .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error))
   }
 
@@ -126,5 +174,9 @@ export class PetService {
     return this.http
       .put<User>(url, message)
       .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
+  }
+
+  isLoggedIn (): boolean {
+    return this.authToken !== undefined;
   }
 }

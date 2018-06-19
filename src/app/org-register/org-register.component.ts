@@ -16,6 +16,10 @@ export class OrgRegisterComponent implements OnInit {
   password: string = '';
   repassword: string= '';
 
+  constructor(private petService: PetService) {}
+
+  ngOnInit() {}
+
   onSubmit () {
     this.submitted = true;
     console.log(this.org);
@@ -35,6 +39,7 @@ export class OrgRegisterComponent implements OnInit {
       // add some logic here to show confirmation message
       if (response.hasOwnProperty('jwt_token')) {
         this.successMessage = 'New Organization added successfully'
+        this.errorMessage = '';
       }
     }, httpErr => {
 
@@ -53,11 +58,4 @@ export class OrgRegisterComponent implements OnInit {
       }
     });
   }
-
-  constructor(private petService: PetService) {
-  }
-
-  ngOnInit() {
-  }
-
 }

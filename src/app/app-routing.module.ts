@@ -8,11 +8,13 @@ import { OrgDetailComponent } from "./org-detail/org-detail.component";
 import { PetComponent } from "./pet/pet.component";
 import { NewPetComponent } from "./new-pet/new-pet.component";
 import { SplashComponent } from "./splash/splash.component";
+import { UserRegisterComponent } from "./user-register/user-register.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/splash", pathMatch: "full" },
   { path: "splash", component: SplashComponent },
   { path: "user", component: UserComponent },
+  { path: "user/register", component: UserRegisterComponent },
   { path: "user/:_id", component: UserDetailComponent },
   { path: "orgs", component: OrgsComponent },
   { path: "orgs/:_id", component: OrgDetailComponent },
