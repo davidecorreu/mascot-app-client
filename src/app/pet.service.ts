@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/catch";
 import "rxjs/add/observable/throw";
@@ -17,6 +17,8 @@ import { Org } from "./models/org.model";
 @Injectable()
 export class PetService {
   private petUrl = "http://localhost:3000";
+  public pet: Pet = null;
+  selectedPet: EventEmitter<Pet> = new EventEmitter<Pet>();
 
   constructor(private http: HttpClient) {}
 
@@ -30,6 +32,10 @@ export class PetService {
     } else {
       return Observable.throw(error); // re-throw
     }
+  }
+
+  setSelectedPet(value: Pet) {
+    this.selectedPet.emit(value);
   }
 
   addPet(Pet: {}): Observable<Pet> {
@@ -62,14 +68,6 @@ export class PetService {
     const url = `${this.petUrl}/orgs/${id}`;
     return this.http
       .get<Org>(url)
-      .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
-  }
-
-  getUser(id: String): Observable<User> {
-    console.log("getUser() from PetService");
-    const url = `${this.petUrl}/users/${id}`;
-    return this.http
-      .get<User>(url)
       .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
   }
 

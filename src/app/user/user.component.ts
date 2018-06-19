@@ -1,50 +1,22 @@
 import { Component, OnInit } from "@angular/core";
-
 import { PetService } from "../pet.service";
 import { Pet } from "../models/pet.model";
-import { User } from "../models/user.model";
 
 @Component({
   selector: "app-user",
   templateUrl: "./user.component.html",
-  styleUrls: ["./user.component.scss"]
+  styleUrls: ["./user.component..scss"]
 })
 export class UserComponent implements OnInit {
-  pets: Pet[];
-  user: User;
-  dismissible = true;
-
-  markAsRead(dismissedAlert: any, user: any): void {
-    this.user.messages = this.user.messages.filter(
-      alert => alert !== dismissedAlert
-    );
-    this.petService
-      .markAsRead(dismissedAlert._id, user._id)
-      .subscribe(
-        data => console.log("data", data),
-        error => console.log("error", error)
-      );
-  }
-
-  constructor(private petService: PetService) {}
+  constructor(public petService: PetService) {}
+  selectedPet: Pet = null;
 
   ngOnInit() {
-    this.getPets();
-    this.getUser();
+    this.petService.selectedPet.subscribe(value => (this.selectedPet = value));
+    console.log(this.selectedPet);
   }
 
-  getPets(): void {
-    this.petService.getPets().subscribe(pets => {
-      this.pets = pets.filter(i => i.available !== false);
-    });
-  }
-
-  getUser(): void {
-    const id = "5b23e5323615e20bac43f80e";
-    this.petService.getUser(id).subscribe(user => (this.user = user));
-  }
-
-  read(): void {
-    console.log(this.user);
+  getPet() {
+    console.log(this.petService.pet);
   }
 }
