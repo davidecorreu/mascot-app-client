@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { PetService } from '../pet.service';
@@ -17,6 +17,7 @@ export class OrgDetailComponent implements OnInit {
 
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private petService: PetService,
     private location: Location
@@ -33,6 +34,8 @@ export class OrgDetailComponent implements OnInit {
       .subscribe(org => {
         this.org = org;
         console.log('org-detail.component, this.org:',this.org);
+        console.log('org-detail.component, this.org.name:',this.org.name);
+        this.router.navigateByUrl('/orgs/'+this.org.name);
       });
   }
 

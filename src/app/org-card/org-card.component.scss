@@ -1,0 +1,21 @@
+.org-card-container {
+  margin: 1em;
+}
+
+.org-card-header {
+  background-color: #f5cd79;
+  border-bottom: solid gray;
+  padding: 0.1em 0.4em;
+}
+
+.org-card {
+  padding: 1em;
+  border: solid gray 3px;
+  border-radius: 0.6em;
+  background-color: white;
+}
+
+.org-card-body{
+  word-break: break-all;
+  padding: 0.4em;
+}

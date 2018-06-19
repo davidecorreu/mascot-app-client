@@ -1,12 +1,30 @@
-<ul class="orgs">
+<div class="orgs-container">
+  <div class="orgs-cards-container">
+    <app-org-card *ngFor="let org of orgs" [org]="org">
+    </app-org-card>
+    <app-org-card *ngFor="let org of orgs" [org]="org">
+    </app-org-card>
+    <app-org-card *ngFor="let org of orgs" [org]="org">
+    </app-org-card>
+  </div>
+  <div class="orgs-area">
+    <div class="orgs-register-container">
+      <app-org-register></app-org-register>
+    </div>
+    <div class="orgs-login-container">
+      orgs login area
+    </div>
+  </div>
+</div>
+<div class="fondo"></div>
+
+<!-- <ul class="orgs">
   <li *ngFor="let org of orgs">
+    <app-org-card (org)="org"></app-org-card>
     <a routerLink="/orgs/{{org._id}}">
       <h1>{{org.name}}</h1>
     </a>
   </li>
-</ul>
-
-
-
+</ul> -->
 
 <!-- <app-new-pet></app-new-pet> -->
