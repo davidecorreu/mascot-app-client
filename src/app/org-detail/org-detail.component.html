@@ -17,7 +17,7 @@
     <button (click)="goBack()">Atras</button>
 
     <div *ngFor="let query of org.queries">
-      <div *ngIf="query.user">
+      <!-- <div *ngIf="query.user">
         <div class="notifications-container">
           <alert type="success">
             <p>{{query.user.name}} quiere adoptar a {{query.pet.name}}</p>
@@ -25,7 +25,7 @@
             <p (click)="rejectAdoption(query._id, query.pet._id, query.user._id)">❎</p>
           </alert>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="pet-container" class="card card-block card-header">

@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/catch";
 import "rxjs/add/observable/throw";
@@ -16,6 +16,8 @@ import { catchError, map, tap } from "rxjs/operators";
 import { Pet } from "./models/pet.model";
 import { User } from "./models/user.model";
 import { Org } from "./models/org.model";
+
+declare const Buffer;
 
 @Injectable()
 export class PetService {
@@ -76,54 +78,59 @@ export class PetService {
     const url = `${this.petUrl}/orgs`;
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        "Content-Type": "application/json"
       })
-    }
-    return this.http
-    .post<any>(url, org, httpOptions)
-    .map(res => {
-      this.authToken = res.jwt_token;
-      this.currentOrg = res.name;
-      return res;
-    })
-    // .catch(error => error)
-    .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error))
+    };
+    return (
+      this.http
+        .post<any>(url, org, httpOptions)
+        .map(res => {
+          this.authToken = res.jwt_token;
+          this.currentOrg = res.name;
+          return res;
+        })
+        // .catch(error => error)
+        .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error))
+    );
   }
 
   loginOrg(orgInfo): any {
     const url = `${this.petUrl}/orgs/sign-in`;
-    console.log('btoa:',Buffer.from(orgInfo.name + ':' + orgInfo.password).toString('base64'));
+    // console.log(
+    //   "btoa:",
+    //   Buffer.from(orgInfo.name + ":" + orgInfo.password).toString("base64")
+    // );
     const httpOptions = {
       headers: {
-        'Authorization': 'Basic ' + Buffer.from(orgInfo.name + ':' + orgInfo.password).toString('base64')
+        Authorization:
+          "Basic " +
+          Buffer.from(orgInfo.name + ":" + orgInfo.password).toString("base64")
       }
-    }
-    return this.http
-    .get<any>(url, httpOptions)
-    .map(res => {
-      if (res.hasOwnProperty('jwt_token')) {
+    };
+    return this.http.get<any>(url, httpOptions).map(res => {
+      if (res.hasOwnProperty("jwt_token")) {
         this.authToken = res.jwt_token;
         this.currentOrg = res.name;
         return res;
       }
-    })
+    });
   }
 
   addUser(user: object): Observable<any> {
     const url = `${this.petUrl}/users`;
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        "Content-Type": "application/json"
       })
-    }
+    };
     return this.http
-    .post<any>(url, user, httpOptions)
-    .map(res => {
-      this.authToken = res.jwt_token;
-      this.currentUser = res.name;
-      return res;
-    })
-    .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error))
+      .post<any>(url, user, httpOptions)
+      .map(res => {
+        this.authToken = res.jwt_token;
+        this.currentUser = res.name;
+        return res;
+      })
+      .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
   }
 
   getUser(id: String): Observable<User> {
@@ -176,7 +183,7 @@ export class PetService {
       .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
   }
 
-  isLoggedIn (): boolean {
+  isLoggedIn(): boolean {
     return this.authToken !== undefined;
   }
 }
