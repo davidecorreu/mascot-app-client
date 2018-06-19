@@ -26,6 +26,7 @@ import { OrgRegisterComponent } from "./org-register/org-register.component";
     OrgsComponent,
     NewPetComponent,
     OrgDetailComponent,
+    UserComponent,
     SplashComponent,
     OrgCardComponent,
     OrgRegisterComponent

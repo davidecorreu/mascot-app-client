@@ -71,6 +71,21 @@ export class PetService {
       .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
   }
 
+  addOrg(org: Org): Observable<any> {
+    const url = `${this.petUrl}/orgs`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    };
+    return (
+      this.http
+        .post<any>(url, org, httpOptions)
+        // .catch(error => error)
+        .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error))
+    );
+  }
+
   adoptionRequest(org: String, pet: String, user: String): Observable<Org> {
     const url = `${this.petUrl}/orgs/${org}`;
     const adoptionReq = { org, pet, user };
