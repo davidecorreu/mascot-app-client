@@ -23,7 +23,7 @@ declare const Buffer;
 export class PetService {
   private authToken: string;
   public currentOrg: string;
-  public currentUser: string;
+  public currentUserEmail: string;
 
   private petUrl = "http://localhost:3000";
 
@@ -127,10 +127,29 @@ export class PetService {
       .post<any>(url, user, httpOptions)
       .map(res => {
         this.authToken = res.jwt_token;
-        this.currentUser = res.name;
+        this.currentUserEmail = res.email;
         return res;
       })
       .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
+  }
+
+  loginUser(userInfo): Observable<any> {
+    console.log('loginUser userInfo:',userInfo);
+    const url = `${this.petUrl}/users/sign-in`;
+    const httpOptions = {
+      headers: {
+        Authorization:
+          "Basic " +
+          Buffer.from(userInfo.email + ":" + userInfo.password).toString("base64")
+      }
+    };
+    return this.http.get<any>(url, httpOptions).map(res => {
+      if (res.hasOwnProperty("jwt_token")) {
+        this.authToken = res.jwt_token;
+        this.currentUserEmail = res.email;
+        return res;
+      }
+    });
   }
 
   getUser(id: String): Observable<User> {
