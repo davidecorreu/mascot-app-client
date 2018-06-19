@@ -3,8 +3,9 @@
 }
 
 .org-card-header {
-  background-color: lightgray;
+  background-color: #f5cd79;
   border-bottom: solid gray;
+  padding: 0.1em 0.4em;
 }
 
 .org-card {
@@ -15,5 +16,6 @@
 }
 
 .org-card-body{
-  // background-color: beige;
+  word-break: break-all;
+  padding: 0.4em;
 }

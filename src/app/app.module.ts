@@ -16,7 +16,8 @@ import { NewPetComponent } from './new-pet/new-pet.component';
 import { OrgDetailComponent } from './org-detail/org-detail.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { SplashComponent } from './splash/splash.component';
-import { OrgCardComponent } from './org-card/org-card.component'
+import { OrgCardComponent } from './org-card/org-card.component';
+import { OrgRegisterComponent } from './org-register/org-register.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { OrgCardComponent } from './org-card/org-card.component'
     OrgDetailComponent,
     UserDetailComponent,
     SplashComponent,
-    OrgCardComponent
+    OrgCardComponent,
+    OrgRegisterComponent
   ],
   imports: [
     AlertModule.forRoot(),

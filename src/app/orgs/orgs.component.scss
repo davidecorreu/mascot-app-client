@@ -23,12 +23,17 @@
 
 .orgs-area {
   flex: 1;
+  padding: 0 4em;
   // background-color: coral;
+}
+
+.orgs-register-container {
+
 }
 
 .fondo {
   position: fixed;
-  background-color: coral;
+  background-color: rgb(212, 238, 239);
   height: 100%;
   width: 100%;
   top: 0;
