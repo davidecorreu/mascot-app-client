@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { PetService } from '../pet.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-org-login',
@@ -8,14 +10,15 @@ import { PetService } from '../pet.service';
   styleUrls: ['./org-login.component.scss']
 })
 export class OrgLoginComponent implements OnInit {
-  orgLogin: object = {
+  orgLogin  = {
     name: null,
     password: null
   }
   errorMessage: string = '';
   successMessage: string ='';
 
-  constructor(private petService: PetService) { }
+  constructor(private petService: PetService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -26,6 +29,7 @@ export class OrgLoginComponent implements OnInit {
       if (res.hasOwnProperty('jwt_token')) {
         this.successMessage = 'Login Successfull'
         this.errorMessage = '';
+        this.router.navigate([`/orgs/${this.orgLogin.name}`]);
       }
     },
     httpErr => {

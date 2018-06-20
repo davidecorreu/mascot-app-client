@@ -1,0 +1,26 @@
+.login-screen-container {
+  display: flex;
+  justify-content: center;
+}
+
+.user-area-container, .org-area-container {
+  display: flex;
+  padding: 4em;
+}
+
+.user-area-container {
+  border-right: solid rgba(126, 126, 126, 0.6);
+}
+
+.user-login, .org-login {
+  padding-left: 2em;
+}
+
+.background {
+  position: fixed;
+  background-color: rgb(212, 238, 239);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: -2;
+}

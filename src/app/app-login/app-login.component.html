@@ -1,0 +1,17 @@
+<div class="app-login-container">
+  <div class="logged-state" *ngIf="petService.authToken">
+    <div class="app-user-login" *ngIf="petService.currentUserEmail">
+      {{petService.currentUserEmail}}
+    </div>
+    <div class="app-org-login" *ngIf="petService.currentOrg" routerLink="/orgs/{{petService.currentOrg}}">
+      Org: {{petService.currentOrg}}
+    </div>
+    <button class="log-out-button" (click)="petService.logOut()">Log Out</button>
+  </div>
+
+  <div class="unlogged-state" *ngIf="!petService.authToken">
+    <div class="app-loggin">
+      <a routerLink="/login">Login</a>
+    </div>
+  </div>
+</div>

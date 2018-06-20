@@ -21,6 +21,8 @@ import { UserRegisterComponent } from "./user-register/user-register.component";
 import { PetSelectComponent } from "./pet-select/pet-select.component";
 import { PetsComponent } from "./pets/pets.component";
 import { UserLoginComponent } from './user-login/user-login.component';
+import { AppLoginComponent } from './app-login/app-login.component';
+import { AppLoginScreenComponent } from './app-login-screen/app-login-screen.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { UserLoginComponent } from './user-login/user-login.component';
     OrgLoginComponent,
     UserRegisterComponent,
     PetSelectComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    AppLoginComponent,
+    AppLoginScreenComponent
   ],
   imports: [
     AlertModule.forRoot(),

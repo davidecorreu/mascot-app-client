@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 import { PetService } from '../pet.service';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-user-register',
@@ -15,7 +17,8 @@ export class UserRegisterComponent implements OnInit {
   errorMessage: string = '';
   successMessage: string ='';
 
-  constructor(private petService: PetService) { }
+  constructor(private petService: PetService,
+              private location: Location) { }
 
   ngOnInit() {
   }
@@ -37,6 +40,7 @@ export class UserRegisterComponent implements OnInit {
       if (response.hasOwnProperty('jwt_token')) {
         this.successMessage = 'New User added successfully'
         this.errorMessage = '';
+        this.location.back();
       }
     }, httpErr => {
 

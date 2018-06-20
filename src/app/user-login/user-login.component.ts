@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { PetService } from '../pet.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-user-login',
@@ -15,7 +17,8 @@ export class UserLoginComponent implements OnInit {
   errorMessage: string = '';
   successMessage: string ='';
 
-  constructor(private petService: PetService) { }
+  constructor(private petService: PetService,
+              private location: Location) { }
 
   ngOnInit() {
   }
@@ -26,6 +29,7 @@ export class UserLoginComponent implements OnInit {
       if (res.hasOwnProperty('jwt_token')) {
         this.successMessage = 'Login Successfull'
         this.errorMessage = '';
+        this.location.back();
       }
     },
     httpErr => {
