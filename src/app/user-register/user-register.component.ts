@@ -3,7 +3,7 @@ import { User } from '../models/user.model';
 import { PetService } from '../pet.service';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +20,8 @@ export class UserRegisterComponent implements OnInit {
 
   constructor(private petService: PetService,
               private location: Location,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {}
 
@@ -41,7 +42,8 @@ export class UserRegisterComponent implements OnInit {
       if (response.hasOwnProperty('jwt_token')) {
         this.successMessage = 'New User added successfully'
         this.errorMessage = '';
-        if (this.route.snapshot.routeConfig.path === 'login') this.location.back();
+        if (this.route.snapshot.routeConfig.path.search('pets') == -1)
+          this.router.navigateByUrl("/pets");
       }
     });
   }
