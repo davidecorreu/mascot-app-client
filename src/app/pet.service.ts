@@ -4,6 +4,7 @@ import "rxjs/add/operator/catch";
 import "rxjs/add/observable/throw";
 import "rxjs/add/operator/map";
 import btoa from "btoa";
+import { Router } from "@angular/router";
 
 import { ErrorObservable } from "rxjs/observable/ErrorObservable";
 import {
@@ -27,7 +28,8 @@ export class PetService {
 
   private petUrl = "http://localhost:3000";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+              private router: Router) {}
 
   private handleAngularJsonBug(error: HttpErrorResponse) {
     const JsonParseError = "Http failure during parsing for";
@@ -228,5 +230,7 @@ export class PetService {
     this.authToken = undefined;
     this.currentOrg = null;
     this.currentUser = null;
+    this.router.navigateByUrl("/");
+
   }
 }

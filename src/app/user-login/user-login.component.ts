@@ -20,7 +20,8 @@ export class UserLoginComponent implements OnInit {
   constructor(
     private petService: PetService,
     private location: Location,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {}
@@ -30,8 +31,10 @@ export class UserLoginComponent implements OnInit {
       if (res.hasOwnProperty("jwt_token")) {
         this.successMessage = "Login Successfull";
         this.errorMessage = "";
-        if (this.route.snapshot.routeConfig.path === "login")
-          this.location.back();
+        console.log('this.route.snapshot.routeConfig.path.search(pets) :', this.route.snapshot.routeConfig.path.search('pets'))
+
+        if (this.route.snapshot.routeConfig.path.search('pets') == -1)
+          this.router.navigateByUrl("/pets");
       }
     });
   }
