@@ -87,6 +87,7 @@ export class PetService {
         .map(res => {
           this.authToken = res.jwt_token;
           this.currentOrg = res.name;
+          this.currentUserEmail = "";
           return res;
         })
         // .catch(error => error)
@@ -111,6 +112,7 @@ export class PetService {
       if (res.hasOwnProperty("jwt_token")) {
         this.authToken = res.jwt_token;
         this.currentOrg = res.name;
+        this.currentUserEmail = "";
         return res;
       }
     });
@@ -128,6 +130,7 @@ export class PetService {
       .map(res => {
         this.authToken = res.jwt_token;
         this.currentUserEmail = res.email;
+        this.currentOrg = "";
         return res;
       })
       .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
@@ -149,6 +152,7 @@ export class PetService {
       if (res.hasOwnProperty("jwt_token")) {
         this.authToken = res.jwt_token;
         this.currentUserEmail = res.email;
+        this.currentOrg = "";
         return res;
       }
     });

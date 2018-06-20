@@ -3,7 +3,7 @@
   width: 100vw;
   display: flex;
   justify-content: flex-start;
-  // background-color: rgb(212, 238, 239);
+  // background: linear-gradient(to top, rgb(202, 230, 235), rgb(240, 248, 249));
   // background: url("../../assets/images/background.jpg");
 }
 
@@ -42,7 +42,7 @@
 
 .pets-background {
   position: fixed;
-  background-color: rgb(212, 238, 239);
+  background: linear-gradient(to top, rgb(202, 230, 235), rgb(240, 248, 249));
   top: 0;
   // background-color: lime;
   z-index: -2;
@@ -65,13 +65,16 @@
 .user-register-form {
   // position: fixed;
   height: 80%;
-  width: 70%;
+  width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin: 10% 5% 5% 15%;
+  margin: 5% 3% 0 3%;
 }
 
+.user-register-container {
+  width: 200px;
+}
 .button-accept {
   height: 60px;
   width: 200px;

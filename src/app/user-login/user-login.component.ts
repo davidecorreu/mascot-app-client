@@ -26,20 +26,13 @@ export class UserLoginComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    this.petService.loginUser(this.userLogin).subscribe(
-      res => {
-        if (res.hasOwnProperty("jwt_token")) {
-          this.successMessage = "Login Successfull";
-          this.errorMessage = "";
-          console.log(this.route.snapshot.routeConfig.path);
-          if (this.route.snapshot.routeConfig.path === "login")
-            this.location.back();
-        }
-      },
-      httpErr => {
-        console.log("user login httpErr:", httpErr);
-        this.errorMessage = httpErr.error;
+    this.petService.loginUser(this.userLogin).subscribe(res => {
+      if (res.hasOwnProperty("jwt_token")) {
+        this.successMessage = "Login Successfull";
+        this.errorMessage = "";
+        if (this.route.snapshot.routeConfig.path === "login")
+          this.location.back();
       }
-    );
+    });
   }
 }

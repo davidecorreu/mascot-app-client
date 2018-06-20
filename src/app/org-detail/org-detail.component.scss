@@ -7,7 +7,7 @@
 }
 
 .details {
-  height: 90vh;
+  height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -40,10 +40,11 @@
   justify-content: space-around;
 }
 
-.org-info p {
-  font-size: 2em;
+.org-info h3 {
+  // font-size: 2em;
   font-family: "Lato";
   margin-left: 10px;
+  margin-top: 10px;
 }
 
 //////////////////////////////////
@@ -75,7 +76,7 @@
 }
 
 .child-pet-container-title h4 {
-  font-size: 2em;
+  // font-size: 2em;
   font-family: "Ubuntu";
 }
 .child-pet-container-info {
@@ -88,7 +89,7 @@
   margin-left: 5px;
   // margin: 10px 0 0 10px;
   font-family: "Ubuntu";
-  font-size: 1.5em;
+  // font-size: 1.5em;
 }
 
 .add-pet {
@@ -112,7 +113,7 @@
 
 .fondo {
   position: fixed;
-  background-color: rgb(212, 238, 239);
+  background: linear-gradient(to top, rgb(202, 230, 235), rgb(240, 248, 249));
   height: 100%;
   width: 100%;
   top: 0;

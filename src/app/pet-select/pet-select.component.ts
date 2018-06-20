@@ -37,6 +37,12 @@ export class PetSelectComponent implements OnInit {
 
   buttonAccept(): void {
     this.accept = true;
+    console.log(this.pet);
+    this.petService.adoptionRequest(
+      this.pet.organization._id,
+      this.pet.id,
+      this.petService.currentUserEmail
+    );
   }
 
   showPet(): void {

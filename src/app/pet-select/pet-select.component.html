@@ -17,12 +17,12 @@
         </div>
     </div>
   </div>
-  <div class = 'user-register-form' *ngIf='!loggedIn' >
-    <app-user-register class='app-user-register'></app-user-register>
+  <div class = 'user-register-form' *ngIf='!petService.isUserLoggedIn()' >
+    <app-user-register class="user-register-container" ></app-user-register>
     <app-user-login></app-user-login>
   </div>
-  <button *ngIf='loggedIn' type="button" name="button" class= 'button-accept' (click)="buttonAccept()" [hidden]="accept">Get in touch with {{pet.organization.name}}</button>
-  <div *ngIf="accept" class="message">
+  <button *ngIf='petService.isUserLoggedIn()' type="button" name="button" class= 'button-accept' (click)="buttonAccept()" [hidden]="accept">Get in touch with {{pet.organization.name}}</button>
+  <div *ngIf="accept && petService.isUserLoggedIn()" class="message">
     <p>We have received your petition to adopt {{pet.name}}!. We will send your contact information to {{pet.organization.name}} so they can get in contact with you as soon as possible. Have a nice day!</p>
   </div>
 </div>
