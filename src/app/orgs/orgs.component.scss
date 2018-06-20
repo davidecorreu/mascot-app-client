@@ -12,7 +12,7 @@
   // grid-auto-rows: 5px;
   grid-auto-flow: row dense;
   grid-gap: 0.5em;
-  // background-color: rgb(212, 238, 239);
+  // background: linear-gradient(to top, rgb(202, 230, 235), rgb(240, 248, 249));
   // padding: 20px 20px 20px;
 }
 
@@ -28,7 +28,6 @@
 }
 
 .orgs-register-container {
-
 }
 
 .orgs-login-container {
@@ -37,7 +36,7 @@
 
 .fondo {
   position: fixed;
-  background-color: rgb(212, 238, 239);
+  background: linear-gradient(to top, rgb(202, 230, 235), rgb(240, 248, 249));
   height: 100%;
   width: 100%;
   top: 0;
