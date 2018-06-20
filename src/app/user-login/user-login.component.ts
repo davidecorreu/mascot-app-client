@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { PetService } from '../pet.service';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class UserLoginComponent implements OnInit {
   successMessage: string ='';
 
   constructor(private petService: PetService,
-              private location: Location) { }
+              private location: Location,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -29,7 +31,7 @@ export class UserLoginComponent implements OnInit {
       if (res.hasOwnProperty('jwt_token')) {
         this.successMessage = 'Login Successfull'
         this.errorMessage = '';
-        this.location.back();
+        if (this.route.snapshot.routeConfig.path === 'login') this.location.back();
       }
     },
     httpErr => {
