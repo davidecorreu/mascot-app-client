@@ -1,20 +1,24 @@
-<ng-container *ngIf="org">
+<div *ngIf="org" class='container'>
 
-  <div *ngIf="org" class="details" class="card card-block card-header">
-    <h2>{{ org.name | uppercase }}</h2>
-    <div>
-      <p>
-        {{org.location}}
-      </p>
-      <p>
-        {{org.web}}
-      </p>
-      <p>
-        {{org.email}}
-      </p>
+  <div *ngIf="org" class="details">
+    <div class="org">
+      <div class="org-title">
+        <h2>{{ org.name | uppercase }}</h2>
+      </div>
+      <div class = 'org-info'>
+        <p>
+          Location: {{org.location}}
+        </p>
+        <p>
+          Website: {{org.web}}
+        </p>
+        <p>
+          E-mail: {{org.email}}
+        </p>
+      </div>
     </div>
-    <button routerLink="/orgs/{{org._id}}/pets">Nueva Mascota</button>
-    <button (click)="goBack()">Atras</button>
+
+    <!-- <button (click)="goBack()">Atras</button> -->
 
     <div *ngFor="let query of org.queries">
       <!-- <div *ngIf="query.user">
@@ -28,10 +32,24 @@
       </div> -->
     </div>
 
-    <div class="pet-container" class="card card-block card-header">
-      <div *ngFor="let pet of org.pets">
-        <h4>{{pet.name}}</h4>
-      </div>
-    </div>
+      <h1>Your Pets:</h1>
+      <div class="parent-pet-container">
+        <div *ngFor="let pet of org.pets" class = 'pet-container'>
+          <div class="child-pet-container-title">
+            <h4>{{pet.name}}</h4>
+          </div>
+          <div class="child-pet-container-info">
+            <h5>Age: {{pet.age}} years</h5>
+            <h5>Weight: {{pet.weight}} kg</h5>
+            <h5>Location: {{pet.location}}</h5>
+
+          </div>
+
+        </div>
   </div>
-</ng-container>
+  <button routerLink="/orgs/{{org._id}}/pets" class = 'add-pet'>Add Pet</button>
+  </div>
+</div>
+<div class="fondo">
+
+</div>

@@ -134,13 +134,15 @@ export class PetService {
   }
 
   loginUser(userInfo): Observable<any> {
-    console.log('loginUser userInfo:',userInfo);
+    console.log("loginUser userInfo:", userInfo);
     const url = `${this.petUrl}/users/sign-in`;
     const httpOptions = {
       headers: {
         Authorization:
           "Basic " +
-          Buffer.from(userInfo.email + ":" + userInfo.password).toString("base64")
+          Buffer.from(userInfo.email + ":" + userInfo.password).toString(
+            "base64"
+          )
       }
     };
     return this.http.get<any>(url, httpOptions).map(res => {
@@ -202,7 +204,7 @@ export class PetService {
       .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
   }
 
-  isLoggedIn(): boolean {
-    return this.authToken !== undefined;
+  isUserLoggedIn(): boolean {
+    return this.currentUserEmail !== undefined;
   }
 }

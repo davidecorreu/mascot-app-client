@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Org } from "../models/org.model";
 import { PetService } from "../pet.service";
 import { AlertModule } from "ngx-bootstrap/alert";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 
 @Component({
   selector: "app-org-register",
@@ -16,7 +17,7 @@ export class OrgRegisterComponent implements OnInit {
   password: string = "";
   repassword: string = "";
 
-  constructor(private petService: PetService) {}
+  constructor(private petService: PetService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -39,6 +40,7 @@ export class OrgRegisterComponent implements OnInit {
         if (response.hasOwnProperty("jwt_token")) {
           this.successMessage = "New Organization added successfully";
           this.errorMessage = "";
+          this.router.navigate(["/orgs", this.org.name]);
         }
       },
       httpErr => {

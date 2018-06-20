@@ -25,6 +25,7 @@ export class PetSelectComponent implements OnInit {
 
   ngOnInit() {
     this.getPet();
+    this.userLogged();
   }
 
   getPet(): void {
@@ -35,7 +36,12 @@ export class PetSelectComponent implements OnInit {
   buttonAccept(): void {
     this.accept = true;
   }
+
   showPet(): void {
     console.log(this.pet);
+  }
+
+  userLogged(): void {
+    if (this.petService.isUserLoggedIn()) this.loggedIn = true;
   }
 }

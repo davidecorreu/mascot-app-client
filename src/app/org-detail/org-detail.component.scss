@@ -1,12 +1,120 @@
-.pet-container {
+.container {
   display: flex;
-  margin: 0px
+  margin: 0px;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
 }
 
-p {
-  display: inline;
+.details {
+  height: 90vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  font-family: "Lato";
+  margin-top: 15px;
+}
+.org {
+  border-radius: 15px 15px 15px 15px;
+  height: 200px;
+  width: 500px;
+  margin-right: 15px;
+  margin-bottom: 20px;
+  border: solid black;
+  border-width: thin;
+}
+.org-title {
+  height: 50px;
+  border-radius: 15px 15px 0px 0px;
+  background-color: #4cd137;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid black;
+  border-width: thin;
 }
 
-alert {
-  margin: 0 10px;
+.org-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.org-info p {
+  font-size: 2em;
+  font-family: "Lato";
+  margin-left: 10px;
+}
+
+//////////////////////////////////
+
+.parent-pet-container {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+}
+
+.pet-container {
+  border-radius: 15px 15px 15px 15px;
+  height: 200px;
+  width: 200px;
+  margin-right: 15px;
+  border: solid black;
+  border-width: thin;
+}
+
+.child-pet-container-title {
+  height: 50px;
+  border-radius: 15px 15px 0px 0px;
+  background-color: #f5cd79;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid black;
+  border-width: thin;
+}
+
+.child-pet-container-title h4 {
+  font-size: 2em;
+  font-family: "Ubuntu";
+}
+.child-pet-container-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 50%;
+}
+.child-pet-container-info h5 {
+  margin-left: 5px;
+  // margin: 10px 0 0 10px;
+  font-family: "Ubuntu";
+  font-size: 1.5em;
+}
+
+.add-pet {
+  // background: #9fc5e8;
+  // background: -webkit-linear-gradient(#9fc5e8, #3d85c6);
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  font: normal 700 46px/1 "Lato", sans-serif;
+  text-align: center;
+  font-size: 17px;
+  background: linear-gradient(to left, rgb(156, 156, 156), rgb(203, 203, 203));
+  color: #ffffff;
+  height: 50px;
+  width: 250px;
+  margin: 3% 50% 0% 40%;
+}
+.add-pet:hover {
+  background: rgb(156, 156, 156);
+}
+
+.fondo {
+  position: fixed;
+  background-color: rgb(212, 238, 239);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: -2;
 }
