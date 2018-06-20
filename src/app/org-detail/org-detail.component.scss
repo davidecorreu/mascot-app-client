@@ -16,9 +16,9 @@
 }
 .org {
   border-radius: 15px 15px 15px 15px;
-  height: 200px;
-  width: 500px;
-  margin-right: 15px;
+  height: auto;
+  width: 90vw;
+  margin-left: 3%;
   margin-bottom: 20px;
   border: solid black;
   border-width: thin;
@@ -26,7 +26,7 @@
 .org-title {
   height: 50px;
   border-radius: 15px 15px 0px 0px;
-  background-color: #4cd137;
+  background-color: #3498db;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,7 +36,7 @@
 
 .org-info {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
 }
 
@@ -64,6 +64,35 @@
   border-width: thin;
 }
 
+.pet-queries {
+  border-radius: 15px 15px 15px 15px;
+  margin-right: 15px;
+  height: auto;
+  width: 200px;
+  border: solid black;
+  border-width: thin;
+}
+
+.accept-decline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+}
+#accept-button {
+  margin-right: 10px;
+  color: white;
+  background-color: #2ecc71;
+  border-radius: 3px 3px 3px 3px;
+}
+
+#decline-button {
+  margin-right: 10px;
+  color: white;
+  background-color: #e74c3c;
+  border-radius: 3px 3px 3px 3px;
+}
+
 .child-pet-container-title {
   height: 50px;
   border-radius: 15px 15px 0px 0px;
@@ -75,7 +104,23 @@
   border-width: thin;
 }
 
-.child-pet-container-title h4 {
+.child-pet-query-title {
+  height: 50px;
+  border-radius: 15px 15px 0px 0px;
+  background-color: #2ecc71;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid black;
+  border-width: thin;
+}
+
+.child-pet-container-title h2 {
+  // font-size: 2em;
+  font-family: "Ubuntu";
+}
+
+.child-pet-query-title h2 {
   // font-size: 2em;
   font-family: "Ubuntu";
 }
@@ -85,7 +130,25 @@
   justify-content: space-around;
   height: 50%;
 }
-.child-pet-container-info h5 {
+
+.child-pet-query-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: auto;
+}
+.separator {
+  margin-left: 20%;
+}
+
+.child-pet-container-info h4 {
+  margin-left: 5px;
+  // margin: 10px 0 0 10px;
+  font-family: "Ubuntu";
+  // font-size: 1.5em;
+}
+
+.child-pet-query-info h4 {
   margin-left: 5px;
   // margin: 10px 0 0 10px;
   font-family: "Ubuntu";
@@ -105,7 +168,10 @@
   color: #ffffff;
   height: 50px;
   width: 250px;
-  margin: 3% 50% 0% 40%;
+  // margin: 3% 50% 0% 40%;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  margin-left: 38%;
 }
 .add-pet:hover {
   background: rgb(156, 156, 156);

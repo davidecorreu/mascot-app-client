@@ -1,5 +1,4 @@
 <div *ngIf="org" class='container'>
-
   <div *ngIf="org" class="details">
     <div class="org">
       <div class="org-title">
@@ -18,36 +17,47 @@
       </div>
     </div>
 
-    <!-- <button (click)="goBack()">Atras</button> -->
 
-    <div *ngFor="let query of org.queries">
-      <!-- <div *ngIf="query.user">
-        <div class="notifications-container">
-          <alert type="success">
-            <p>{{query.user.name}} quiere adoptar a {{query.pet.name}}</p>
-            <p (click)="acceptAdoption(query._id, query.pet._id, query.user._id)" >✅</p>
-            <p (click)="rejectAdoption(query._id, query.pet._id, query.user._id)">❎</p>
-          </alert>
-        </div>
-      </div> -->
-    </div>
+    <button routerLink="/orgs/{{org._id}}/pets" class = 'add-pet'>Add Pet</button>
 
       <h1>Your Pets:</h1>
       <div class="parent-pet-container">
+        <div *ngFor='let query of org.queries' class="pet-queries">
+          <div class="child-pet-query-title">
+            <h2>{{query.pet.name}}</h2>
+          </div>
+          <div class="child-pet-query-info">
+            {{query.pet.age}}
+            {{query.pet.weight}}
+            {{query.pet.location}}
+            <h4>Age: {{query.pet.age}} years</h4>
+            <h4>Weight: {{query.pet.weight}} kg</h4>
+            <h4>Location: {{query.pet.location}}</h4>
+            <p class='separator'>___________________________</p>
+            <h4><b><em>User's Info: </em></b></h4>
+            <h4>Name: {{query.user.name}}</h4>
+            <h4>E-mail: {{query.user.email}}</h4>
+            <h4>Location: {{query.user.location}}</h4>
+            <p class='separator'>___________________________</p>
+            <div class="accept-decline">
+              <button type="button" name="button" id='accept-button' (click)= 'acceptAdoption(query._id,query.pet._id,query.user._id)'>Accept</button>
+              <button type="button" name="button" id='decline-button'>Decline</button>
+            </div>
+          </div>
+
+        </div>
         <div *ngFor="let pet of org.pets" class = 'pet-container'>
-          <div class="child-pet-container-title">
-            <h4>{{pet.name}}</h4>
+          <div class="child-pet-container-title" >
+            <h2>{{pet.name}}</h2>
           </div>
           <div class="child-pet-container-info">
-            <h5>Age: {{pet.age}} years</h5>
-            <h5>Weight: {{pet.weight}} kg</h5>
-            <h5>Location: {{pet.location}}</h5>
-
+            <h4>Age: {{pet.age}} years</h4>
+            <h4>Weight: {{pet.weight}} kg</h4>
+            <h4>Location: {{pet.location}}</h4>
           </div>
 
         </div>
   </div>
-  <button routerLink="/orgs/{{org._id}}/pets" class = 'add-pet'>Add Pet</button>
   </div>
 </div>
 <div class="fondo">

@@ -4,8 +4,9 @@
 
 .org-card-header {
   background-color: #f5cd79;
-  border-bottom: solid gray;
   padding: 0.1em 0.4em;
+  border-radius: 15px;
+  border: solid grey;
 }
 
 .org-card {
@@ -15,7 +16,7 @@
   background-color: white;
 }
 
-.org-card-body{
+.org-card-body {
   word-break: break-all;
   padding: 0.4em;
 }

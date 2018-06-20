@@ -12,7 +12,7 @@ import { Pet } from "../models/pet.model";
   styleUrls: ["./pet-select.component.scss"]
 })
 export class PetSelectComponent implements OnInit {
-  pet: Pet;
+  pet: any;
   public id: string;
   loggedIn: boolean = false;
   accept: boolean = false;
@@ -38,13 +38,13 @@ export class PetSelectComponent implements OnInit {
   buttonAccept(): void {
     this.accept = true;
     console.log(this.pet);
-    this.petService.adoptionRequest(
-      this.pet.organization._id,
-      this.pet._id,
-      this.petService.currentUser.id
-    )
-    .subscribe(res => console.log(res),
-                err => console.log(err))
+    this.petService
+      .adoptionRequest(
+        this.pet.organization._id,
+        this.pet._id,
+        this.petService.currentUser.id
+      )
+      .subscribe(res => console.log(res), err => console.log(err));
   }
 
   showPet(): void {

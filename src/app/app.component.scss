@@ -14,11 +14,12 @@
 }
 .title-container h1 {
   font-size: 6rem;
-  font-weight: 600;
+  font-weight: 800;
 }
 .menu-container {
   display: flex;
-  margin-left: 30%;
+  margin-left: 10%;
+  margin-right: 10%;
   margin-top: 1%;
   // align-self: flex-end;
   // background-color: lime;
@@ -33,7 +34,7 @@
   padding: 1em;
   text-decoration: none;
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 700;
   color: $color-title;
   // margin-right: 20%;
 }

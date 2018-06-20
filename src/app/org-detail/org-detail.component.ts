@@ -1,66 +1,64 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { Component, OnInit, Input } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Location } from "@angular/common";
 
-import { PetService } from '../pet.service';
-import { Org } from '../models/org.model';
+import { PetService } from "../pet.service";
+import { Org } from "../models/org.model";
 
 @Component({
-  selector: 'app-org-detail',
-  templateUrl: './org-detail.component.html',
-  styleUrls: ['./org-detail.component.scss']
+  selector: "app-org-detail",
+  templateUrl: "./org-detail.component.html",
+  styleUrls: ["./org-detail.component.scss"]
 })
 export class OrgDetailComponent implements OnInit {
-
   // @Input()  org: Org;
   org: Org;
-
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private petService: PetService,
     private location: Location
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.getOrg()
+    this.getOrg();
   }
 
   getOrg(): void {
     // console.log(org);
-    const id = this.route.snapshot.paramMap.get('_id');
-    this.petService.getOrg(id)
-      .subscribe(org => {
-        this.org = org;
-        console.log('org-detail.component, this.org:',this.org);
-        console.log('org-detail.component, this.org.name:',this.org.name);
-        this.router.navigateByUrl('/orgs/'+this.org.name);
-      });
+    const id = this.petService.currentOrg.id;
+    console.log(id);
+    this.petService.getOrg(id).subscribe(org => {
+      this.org = org;
+      this.router.navigateByUrl("/orgs/" + this.org.name);
+      console.log(this.org, "XXXX");
+    });
   }
 
   acceptAdoption(queryId, petId, usrId): void {
-    const orgId = this.route.snapshot.paramMap.get('_id');
-    this.petService.acceptAdoption(queryId, orgId, petId, usrId)
+    const orgId = this.petService.currentOrg.id;
+    this.petService
+      .acceptAdoption(queryId, orgId, petId, usrId)
       .subscribe(
-      data => console.log('data', data),
-      error => console.log('error', error)
-    );
-    this.getOrg()
+        data => console.log("data", data),
+        error => console.log("error", error)
+      );
+    this.getOrg();
   }
 
   rejectAdoption(queryId, petId, usrId): void {
-    const orgId = this.route.snapshot.paramMap.get('_id');
-    this.petService.rejectAdoption(queryId, orgId, petId, usrId)
+    const orgId = this.petService.currentOrg.id;
+    this.petService
+      .rejectAdoption(queryId, orgId, petId, usrId)
       .subscribe(
-      data => console.log('data', data),
-      error => console.log('error', error)
-    );
-    this.getOrg()
+        data => console.log("data", data),
+        error => console.log("error", error)
+      );
+    this.getOrg();
   }
 
   goBack(): void {
-    this.location.back()
+    this.location.back();
   }
-
 }
