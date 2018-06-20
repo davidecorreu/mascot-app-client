@@ -41,7 +41,7 @@ export class PetSelectComponent implements OnInit {
     this.petService.adoptionRequest(
       this.pet.organization._id,
       this.pet._id,
-      this.petService.currentUserEmail
+      this.petService.currentUser.id
     )
     .subscribe(res => console.log(res),
                 err => console.log(err))
