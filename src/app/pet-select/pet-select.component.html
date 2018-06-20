@@ -18,7 +18,7 @@
     </div>
   </div>
   <div class = 'user-register-form' *ngIf='!loggedIn' >
-    <app-user-register  ></app-user-register>
+    <app-user-register class='app-user-register'></app-user-register>
     <app-user-login></app-user-login>
   </div>
   <button *ngIf='loggedIn' type="button" name="button" class= 'button-accept' (click)="buttonAccept()" [hidden]="accept">Get in touch with {{pet.organization.name}}</button>

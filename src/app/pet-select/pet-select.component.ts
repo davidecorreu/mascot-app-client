@@ -28,6 +28,8 @@ export class PetSelectComponent implements OnInit {
     this.userLogged();
   }
 
+  ngOnChange;
+
   getPet(): void {
     this.id = this.route.snapshot.paramMap.get("_id");
     this.petService.getPet(this.id).subscribe(pet => (this.pet = pet));
