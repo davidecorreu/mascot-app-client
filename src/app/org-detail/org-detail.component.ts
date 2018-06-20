@@ -26,7 +26,6 @@ export class OrgDetailComponent implements OnInit {
   }
 
   getOrg(): void {
-    // console.log(org);
     const id = this.petService.currentOrg.id;
     console.log(id);
     this.petService.getOrg(id).subscribe(org => {

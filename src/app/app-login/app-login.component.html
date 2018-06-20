@@ -1,8 +1,9 @@
 <div class="app-login-container">
   <div class="logged-state" *ngIf="petService.authToken">
-    <div class="app-user-login" *ngIf="petService.currentUser">
+    <div class="app-user-login" *ngIf="petService.currentUser" >
       {{petService.currentUser.email}}
     </div>
+
     <div class="app-org-login" *ngIf="petService.currentOrg" routerLink="/orgs/{{petService.currentOrg.id}}">
       Org: {{petService.currentOrg.name}}
     </div>

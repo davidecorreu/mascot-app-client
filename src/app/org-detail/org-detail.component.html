@@ -41,13 +41,13 @@
             <p class='separator'>___________________________</p>
             <div class="accept-decline">
               <button type="button" name="button" id='accept-button' (click)= 'acceptAdoption(query._id,query.pet._id,query.user._id)'>Accept</button>
-              <button type="button" name="button" id='decline-button'>Decline</button>
+              <button type="button" name="button" id='decline-button' (click)= 'rejectAdoption(query._id,query.pet._id,query.user._id)'>Decline</button>
             </div>
           </div>
 
         </div>
         <div *ngFor="let pet of org.pets" class = 'pet-container'>
-          <div class="child-pet-container-title" >
+          <div class="child-pet-container-title" *ngIf='pet.available'>
             <h2>{{pet.name}}</h2>
           </div>
           <div class="child-pet-container-info">
