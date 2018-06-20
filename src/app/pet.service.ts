@@ -22,8 +22,8 @@ declare const Buffer;
 @Injectable()
 export class PetService {
   private authToken: string;
-  public currentOrg: string;
-  public currentUserEmail: string;
+  public currentOrg = null;
+  public currentUser = null;
 
   private petUrl = "http://localhost:3000";
 
@@ -86,7 +86,11 @@ export class PetService {
         .post<any>(url, org, httpOptions)
         .map(res => {
           this.authToken = res.jwt_token;
-          this.currentOrg = res.name;
+          this.currentOrg = {
+            name: res.name,
+            id: res.id
+          }
+          this.currentUser = null;
           return res;
         })
         // .catch(error => error)
@@ -110,7 +114,11 @@ export class PetService {
     return this.http.get<any>(url, httpOptions).map(res => {
       if (res.hasOwnProperty("jwt_token")) {
         this.authToken = res.jwt_token;
-        this.currentOrg = res.name;
+        this.currentOrg = {
+          name: res.name,
+          id: res.id
+        }
+        this.currentUser = null;
         return res;
       }
     });
@@ -127,7 +135,11 @@ export class PetService {
       .post<any>(url, user, httpOptions)
       .map(res => {
         this.authToken = res.jwt_token;
-        this.currentUserEmail = res.email;
+        this.currentUser = {
+          email: res.email,
+          id: res.id
+        }
+        this.currentOrg = null;
         return res;
       })
       .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
@@ -148,7 +160,11 @@ export class PetService {
     return this.http.get<any>(url, httpOptions).map(res => {
       if (res.hasOwnProperty("jwt_token")) {
         this.authToken = res.jwt_token;
-        this.currentUserEmail = res.email;
+        this.currentUser = {
+          email: res.email,
+          id: res.id
+        }
+        this.currentOrg = null;
         return res;
       }
     });
@@ -205,12 +221,12 @@ export class PetService {
   }
 
   isUserLoggedIn(): boolean {
-    return this.currentUserEmail !== undefined;
+    return this.currentUser !== null;
   }
 
   logOut(): void {
     this.authToken = undefined;
-    this.currentOrg = undefined;
-    this.currentUserEmail = undefined;
+    this.currentOrg = null;
+    this.currentUser = null;
   }
 }
