@@ -207,4 +207,10 @@ export class PetService {
   isUserLoggedIn(): boolean {
     return this.currentUserEmail !== undefined;
   }
+
+  logOut(): void {
+    this.authToken = undefined;
+    this.currentOrg = undefined;
+    this.currentUserEmail = undefined;
+  }
 }

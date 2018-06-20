@@ -1,13 +1,13 @@
 
 <div class="title-container module">
-  <a class="app-title" href="/">
+  <a class="app-title" routerLink="/">
     <h1>mascotApp</h1>
   </a>
   <div class="menu-container">
-    <a class="menu-item" href="/pets">ADOPT</a>
-    <a class="menu-item" href="/orgs">ORGANIZATIONS</a>
-
+    <a class="menu-item" routerLink="/pets">ADOPT</a>
+    <a class="menu-item" routerLink="/orgs">ORGANIZATIONS</a>
   </div>
+  <app-app-login class="menu-item"></app-app-login>
 </div>
 
 <router-outlet></router-outlet>

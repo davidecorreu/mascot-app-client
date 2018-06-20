@@ -1,7 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { User } from "../models/user.model";
-import { PetService } from "../pet.service";
-import { AlertModule } from "ngx-bootstrap/alert";
+import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user.model';
+import { PetService } from '../pet.service';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: "app-user-register",
@@ -15,7 +17,8 @@ export class UserRegisterComponent implements OnInit {
   errorMessage: string = "";
   successMessage: string = "";
 
-  constructor(private petService: PetService) {}
+  constructor(private petService: PetService,
+              private location: Location) { }
 
   ngOnInit() {}
 
@@ -28,21 +31,16 @@ export class UserRegisterComponent implements OnInit {
     const userObj = {
       ...this.user,
       password: this.password
-    };
-    this.petService.addUser(userObj).subscribe(
-      response => {
-        console.log("The response from the backend:", response);
-        // add some logic here to show confirmation message
-        if (response.hasOwnProperty("jwt_token")) {
-          this.successMessage = "New User added successfully";
-          this.errorMessage = "";
-        }
-      },
-      httpErr => {
-        console.log("somthing went wrong, httpErr:", httpErr);
-        const error = httpErr.error.errors[0];
-        this.errorMessage = error;
+    }
+    this.petService.addUser(userObj)
+    .subscribe(response => {
+      console.log('The response from the backend:',response);
+      // add some logic here to show confirmation message
+      if (response.hasOwnProperty('jwt_token')) {
+        this.successMessage = 'New User added successfully'
+        this.errorMessage = '';
+        this.location.back();
       }
-    );
+    });
   }
 }
