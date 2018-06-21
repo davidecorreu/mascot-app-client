@@ -1,7 +1,13 @@
 <div class="app-login-container">
   <div class="logged-state" *ngIf="petService.authToken">
-    <div class="app-user-login" *ngIf="petService.currentUser">
+    <div class="app-user-login" *ngIf="petService.currentUser" (click)="showUserMessages()">
       {{petService.currentUser.email}}
+      <div class="user-messages-container" [hidden]="toggle">
+        <ul>
+          <li *ngIf="messages && messages.length === 0">No new messages</li>
+          <li *ngFor="let message of messages">{{message.message}}</li>
+        </ul>
+      </div>
     </div>
     <div class="app-org-login" *ngIf="petService.currentOrg" routerLink="/orgs/{{petService.currentOrg.id}}">
       Org: {{petService.currentOrg.name}}

@@ -8,8 +8,21 @@
   // background-color: coral;
 }
 
+.app-user-login {
+  // background-color: coral;
+}
+
 .log-out-button {
   margin-top: 1em;
   float: right;
   font-size: 0.7em;
+}
+
+.user-messages-container {
+  position: absolute;
+  padding-right: 1.3em;
+  z-index: 5;
+  background-color: black;
+  opacity: 1;
+  color: white;
 }

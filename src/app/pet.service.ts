@@ -172,11 +172,11 @@ export class PetService {
     });
   }
 
-  getUser(id: String): Observable<User> {
+  getUser(id: String): Observable<any> {
     console.log("getUser() from PetService");
     const url = `${this.petUrl}/users/${id}`;
     return this.http
-      .get<User>(url)
+      .get<any>(url)
       .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
   }
 
