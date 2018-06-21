@@ -27,9 +27,6 @@
             <h2>{{query.pet.name}}</h2>
           </div>
           <div class="child-pet-query-info">
-            {{query.pet.age}}
-            {{query.pet.weight}}
-            {{query.pet.location}}
             <h4>Age: {{query.pet.age}} years</h4>
             <h4>Weight: {{query.pet.weight}} kg</h4>
             <h4>Location: {{query.pet.location}}</h4>
@@ -39,21 +36,23 @@
             <h4>E-mail: {{query.user.email}}</h4>
             <h4>Location: {{query.user.location}}</h4>
             <p class='separator'>___________________________</p>
+          </div>
             <div class="accept-decline">
               <button type="button" name="button" id='accept-button' (click)= 'acceptAdoption(query._id,query.pet._id,query.user._id)'>Accept</button>
               <button type="button" name="button" id='decline-button' (click)= 'rejectAdoption(query._id,query.pet._id,query.user._id)'>Decline</button>
             </div>
-          </div>
 
         </div>
-        <div *ngFor="let pet of org.pets" class = 'pet-container'>
-          <div class="child-pet-container-title" *ngIf='pet.available'>
-            <h2>{{pet.name}}</h2>
-          </div>
-          <div class="child-pet-container-info">
-            <h4>Age: {{pet.age}} years</h4>
-            <h4>Weight: {{pet.weight}} kg</h4>
-            <h4>Location: {{pet.location}}</h4>
+        <div *ngFor="let pet of org.pets" >
+          <div class = 'pet-container' *ngIf='pet.available'>
+            <div class="child-pet-container-title" >
+              <h2>{{pet.name}}</h2>
+            </div>
+            <div class="child-pet-container-info">
+              <h4>Age: {{pet.age}} years</h4>
+              <h4>Weight: {{pet.weight}} kg</h4>
+              <h4>Location: {{pet.location}}</h4>
+            </div>
           </div>
 
         </div>

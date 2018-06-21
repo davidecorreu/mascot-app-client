@@ -28,8 +28,7 @@ export class PetService {
 
   private petUrl = "http://localhost:3000";
 
-  constructor(private http: HttpClient,
-              private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   private handleAngularJsonBug(error: HttpErrorResponse) {
     const JsonParseError = "Http failure during parsing for";
@@ -91,7 +90,7 @@ export class PetService {
           this.currentOrg = {
             name: res.name,
             id: res.id
-          }
+          };
           this.currentUser = null;
           return res;
         })
@@ -119,7 +118,7 @@ export class PetService {
         this.currentOrg = {
           name: res.name,
           id: res.id
-        }
+        };
         this.currentUser = null;
         return res;
       }
@@ -140,7 +139,7 @@ export class PetService {
         this.currentUser = {
           email: res.email,
           id: res.id
-        }
+        };
         this.currentOrg = null;
         return res;
       })
@@ -165,7 +164,7 @@ export class PetService {
         this.currentUser = {
           email: res.email,
           id: res.id
-        }
+        };
         this.currentOrg = null;
         return res;
       }
@@ -196,9 +195,7 @@ export class PetService {
   ): Observable<User> {
     const url = `${this.petUrl}/users/${user}/accepted`;
     const approvalRes = { org, pet, query };
-    return this.http
-      .put<User>(url, approvalRes)
-      .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
+    return this.http.put<User>(url, approvalRes);
   }
 
   rejectAdoption(
@@ -209,9 +206,7 @@ export class PetService {
   ): Observable<User> {
     const url = `${this.petUrl}/users/${user}/rejected`;
     const rejectionRes = { org, pet, query };
-    return this.http
-      .put<User>(url, rejectionRes)
-      .catch((error: HttpErrorResponse) => this.handleAngularJsonBug(error));
+    return this.http.put<User>(url, rejectionRes);
   }
 
   markAsRead(_id, user): Observable<User> {
@@ -231,6 +226,5 @@ export class PetService {
     this.currentOrg = null;
     this.currentUser = null;
     this.router.navigateByUrl("/");
-
   }
 }

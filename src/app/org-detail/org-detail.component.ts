@@ -31,7 +31,6 @@ export class OrgDetailComponent implements OnInit {
     this.petService.getOrg(id).subscribe(org => {
       this.org = org;
       this.router.navigateByUrl("/orgs/" + this.org.name);
-      console.log(this.org, "XXXX");
     });
   }
 
@@ -39,22 +38,14 @@ export class OrgDetailComponent implements OnInit {
     const orgId = this.petService.currentOrg.id;
     this.petService
       .acceptAdoption(queryId, orgId, petId, usrId)
-      .subscribe(
-        data => console.log("data", data),
-        error => console.log("error", error)
-      );
-    this.getOrg();
+      .subscribe(data => console.log("data", data), error => this.getOrg());
   }
 
   rejectAdoption(queryId, petId, usrId): void {
     const orgId = this.petService.currentOrg.id;
     this.petService
       .rejectAdoption(queryId, orgId, petId, usrId)
-      .subscribe(
-        data => console.log("data", data),
-        error => console.log("error", error)
-      );
-    this.getOrg();
+      .subscribe(data => console.log("data", data), error => this.getOrg());
   }
 
   goBack(): void {
